@@ -15,7 +15,10 @@ const BackgroundGradientAnimation = dynamic(
   () => import("./GradientBg").then((mod) => mod.BackgroundGradientAnimation),
   { ssr: false }
 );
-import GridGlobe from "./GridGlobe";
+const GridGlobe = dynamic(
+  () => import("./GridGlobe"), // GridGlobe כנראה מייצא כ-default export
+  { ssr: false }
+);
 import animationData from "@/data/confetti.json";
 import MagicButton from "../MagicButton";
 
