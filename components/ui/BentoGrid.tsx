@@ -6,7 +6,15 @@ import Lottie from "react-lottie";
 
 import { cn } from "@/lib/utils";
 
-import { BackgroundGradientAnimation } from "./GradientBg";
+// import { BackgroundGradientAnimation } from "./GradientBg";
+import dynamic from "next/dynamic";
+
+// מייבאים את הקומפוננטה BackgroundGradientAnimation באופן דינמי
+// ומורים ל-Next.js לא לרנדר אותה בצד השרת (ssr: false)
+const BackgroundGradientAnimation = dynamic(
+  () => import("./GradientBg").then((mod) => mod.BackgroundGradientAnimation),
+  { ssr: false }
+);
 import GridGlobe from "./GridGlobe";
 import animationData from "@/data/confetti.json";
 import MagicButton from "../MagicButton";
@@ -133,7 +141,7 @@ export const BentoGridItem = ({
           <div
             className={`font-sans text-lg lg:text-3xl max-w-96 font-bold z-10`}
           >
-            {title} 
+            {title}
           </div>
 
           {/* for the github 3d globe */}
